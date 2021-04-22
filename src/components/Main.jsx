@@ -1,8 +1,9 @@
 import React from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import AppBarTab from './AppBarTab';
+import theme from '../theme';
 
 
 
@@ -11,8 +12,7 @@ const styles = StyleSheet.create({
     // marginTop: Constants.statusBarHeight,
     flexGrow: 1,
     flexShrink: 1,
-    backgroundColor: 'yellow',
-    color: '#fff'
+    backgroundColor: theme.colors.primaryColor,
   },
 });
 
@@ -22,7 +22,6 @@ const Main = () => {
     <View style={styles.container}>
       <AppBar />
       <AppBarTab />
-      <Text>Rate Repository Application</Text>
       <RepositoryList />
     </View>
   )
