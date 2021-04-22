@@ -1,10 +1,99 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import theme from '../theme';
 
-const style = StyleSheet.create({
-  separator: {
-    height: 10
+const styles = StyleSheet.create({
+  container: {
+    margin: 0,
   },
+  containerWrapper: {
+    borderBottomWidth: 5,
+    borderBottomColor: 'red',
+  },
+  containerBox: {
+    margin: theme.appMargin.marginSize,
+    // backgroundColor: 'green',
+  },
+  separator: {
+    height: 10,
+    // backgroundColor: theme.colors.secondaryColor,
+  },
+  flexCol: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  flexRow: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  viewContainer: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+  },
+  infoContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  detailsContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    marginLeft: 12,
+  },
+  nameText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 3,
+  },
+  descriptionText: {
+    color: theme.colors.secondaryColor2,
+    marginBottom: 3,
+  },
+  languageText: {
+    flexGrow: 0,
+    flexShrink: 1,
+    flexBasis: 'auto',
+    overflow: 'hidden',
+    fontSize: 20,
+    color: theme.colors.primaryColor,
+    backgroundColor: theme.colors.primaryBGColor,
+    minWidth: '20%',
+    maxWidth: '35%',
+    textAlign: 'center',
+    borderRadius: 2,
+    marginTop: 3,
+    padding: 3,
+  },
+  avataStyle: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+  },
+  ratingsWrap: {
+    margin: 12,
+    padding: 5,
+  },
+  ratingsCont: {
+    justifyContent: 'space-between',
+    width: 'auto',
+    textAlign: 'center',
+  },
+  ratingsBox: {
+    width: 80,
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  ratingsBoxTop: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  ratingsContTop: {
+    flexGrow:2,
+  },
+  x: {
+    borderBottomColor: 5,
+    borderBottomColor: 'green'
+  }
 });
 
 const repositories = [
@@ -17,7 +106,7 @@ const repositories = [
     stargazersCount: 21553,
     ratingAverage: 88,
     reviewCount: 4,
-    ownersAvatarUrl: 'https://avatars2.githubusercontent.com/u/40601B7?v=4',
+    ownersAvatarUrl: 'https://avatars2.githubusercontent.com/u/4060187?v=4',
   },
   {
     id: 'rails.rails',
@@ -54,28 +143,51 @@ const repositories = [
   },
 ];
 
-const ItemSeparator = () => <View style={style.separator} />;
+const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
   return (
-    <View>
-      <Text>Go cart==============</Text>
-      <FlatList
-        data={repositories}
-        ItemSeparatorComponent={ItemSeparator}
-        renderItem={({ item }) => 
-          <View>
-            <Text>{item.fullName}</Text>
-            <Text>{item.description}</Text>
-            <Text>{item.language}</Text>
-            <Text>{item.forksCount}</Text>
-            <Text>{item.stargazersCount}</Text>
-            <Text>{item.ratingAverage}</Text>
-            <Text>{item.reviewCount}</Text>
-            <Text>{item.ownersAvatarUrl}</Text>
-          </View>
-        }
-      />
+    <View style={styles.container}>
+      <View style={styles.containerWrapper}>
+        <View style={styles.containerBox}>
+          <FlatList
+            data={repositories}
+            ItemSeparatorComponent={ItemSeparator}
+            renderItem={({ item }) => 
+              <View style={styles.viewContainer}>
+                <View style={styles.infoContainer}>
+                  <Image 
+                    source={{ uri: `${item.ownersAvatarUrl}`}}
+                    style={styles.avataStyle}
+                  />
+                  <View style={styles.detailsContainer}>
+                    <Text style={styles.nameText}>{item.fullName}</Text>
+                    <Text style={styles.descriptionText}>{item.description}</Text>
+                    <Text style={styles.languageText}>{item.language}</Text>
+                  </View>
+                </View>
+
+                <View style={[styles.ratingsWrap, styles.flexCol]}>
+                  <View style={[styles.flexRow, styles.ratingsCont]}>
+                    <Text style={[styles.ratingsBox, styles.ratingsBoxTop]}>{item.forksCount}</Text>
+                    <Text style={[styles.ratingsBox, styles.ratingsBoxTop]}>{item.stargazersCount}</Text>
+                    <Text style={[styles.ratingsBox, styles.ratingsBoxTop]}>{item.ratingAverage}</Text>
+                    <Text style={[styles.ratingsBox, styles.ratingsBoxTop]}>{item.reviewCount}</Text>
+                  </View>
+
+                  <View style={[styles.flexRow, styles.ratingsCont]}>
+                    <Text style={styles.ratingsBox}>Stars</Text>
+                    <Text style={styles.ratingsBox}>Forks</Text>
+                    <Text style={styles.ratingsBox}>Reviews</Text>
+                    <Text style={styles.ratingsBox}>Rating</Text>
+                  </View>
+                </View>
+              </View>
+            }
+          />
+
+        </View>
+      </View>
     </View>
   )
 }
