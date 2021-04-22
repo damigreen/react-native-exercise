@@ -8,6 +8,7 @@ export default function App() {
   return (
       <Main />
   );
+  
 }
 
 const styles = StyleSheet.create({
