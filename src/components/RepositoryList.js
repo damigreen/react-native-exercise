@@ -4,14 +4,12 @@ import theme from '../theme';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     margin: 0,
   },
   containerWrapper: {
-    borderBottomWidth: 5,
-    borderBottomColor: 'red',
   },
   containerBox: {
-    margin: theme.appMargin.marginSize,
     // backgroundColor: 'green',
   },
   separator: {
@@ -30,10 +28,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
+    borderBottomWidth: 5,
+    borderBottomColor: 'brown',
   },
   infoContainer: {
     flex: 1,
     flexDirection: 'row',
+    margin: theme.appMargin.marginSize,
   },
   detailsContainer: {
     flex: 1,
@@ -67,6 +68,7 @@ const styles = StyleSheet.create({
   avataStyle: {
     width: 50,
     height: 50,
+    borderRadius: 4,
     resizeMode: 'contain',
   },
   ratingsWrap: {
@@ -149,7 +151,7 @@ const RepositoryList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.containerWrapper}>
-        <View style={styles.containerBox}>
+        <View>
           <FlatList
             data={repositories}
             ItemSeparatorComponent={ItemSeparator}
