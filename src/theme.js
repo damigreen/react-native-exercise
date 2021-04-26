@@ -7,6 +7,10 @@ const theme = {
     primaryBGColor: 'blue',
     statusBGColor: '#24292e',
     statusBGColor2: '#0b0d0e',
+    textPrimary: '#24292e',
+    textSecondary: '#586069',
+    primary: '#0366d6',
+    background: 'orange'
   },
   borders: {
     color1: 'green',
@@ -14,6 +18,17 @@ const theme = {
   },
   appMargin: {
     marginSize: 8,
+  },
+  fontSize: {
+    body: 14,
+    subheading: 16,
+  },
+  fonts: {
+    main: 'System',
+  },
+  fontWeights: {
+    normal: '400',
+    bold: '700'
   },
 }
 
