@@ -7,13 +7,12 @@ import { Link } from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
     borderWidth: 4,
     borderColor: theme.colors.statusBGColor2,
     backgroundColor: theme.colors.statusBGColor2,
-    height: 50,
     flexDirection: 'row',
-    padding: theme.appMargin.marginSize,
+    height: 42,
+    // padding: theme.appMargin.marginSize,
     justifyContent: 'center',
   },
   tabColor: {
