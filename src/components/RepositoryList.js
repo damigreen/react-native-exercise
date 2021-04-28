@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, Platform } from 'react-native';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   containerWrapper: {
+    
   },
   containerBox: {
     // backgroundColor: 'green',
@@ -49,6 +50,16 @@ const styles = StyleSheet.create({
   descriptionText: {
     color: theme.colors.secondaryColor2,
     marginBottom: 3,
+    fontFamily: Platform.select({
+      android: 'sans-serif',
+      ios: 'Roboto',
+      default: 'math',
+    }),
+    fontSize: Platform.select({
+      // android: 40,
+      // ios: 50,
+      // default: 70,
+    })
   },
   languageText: {
     flexGrow: 0,
