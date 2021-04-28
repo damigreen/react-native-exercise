@@ -6,28 +6,33 @@ import Text from './Text';
 
 const styles = StyleSheet.create({
   textContainer: {
-    // flex: 1,
-    // padding: 10,
     backgroundColor: 'green',
     color: 'blue',
+  },
+  errorText: {
+    color: '#D73A4A',
+  },
+  redBorder: {
+    borderColor: 'red'
   }
 })
 
-const FormikTextInput = ({ name, ...props }) => {
+const FormikTextInput = ({ name, style, ...props }) => {
   const [field, meta, helpers] = useField(name);
-  const showError = meta.touched && meta.error;
+  const showError = meta.error && meta.touched;
+
 
   return (
     <>
       <TextInput
-        style={styles}
+        style={style}
         onChangeText={value => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
         {...props}
       />
-      {showError && <Text style={StyleSheet.errorText}>{meta.error}</Text>}
+      {showError && <Text style={styles.errorText}>{meta.error}</Text>}
     </>
   );
 };
