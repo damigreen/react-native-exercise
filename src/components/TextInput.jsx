@@ -6,15 +6,14 @@ const styles = StyleSheet.create({
     color:'#333',
     padding: 5,
     borderRadius: 1,
+    borderWidth: 2,
     borderStyle: 'solid',
-    borderColor: 'gray',
+    borderColor: 'red',
   },
 });
 
 const TextInput = ({ style, error, ...props }) => {
-  const textInputStyle = [styles.container, style];
-  // const textInputStyle = [style.textContainer];
-  console.log(style)
+  const textInputStyle = error ? styles.container : [style];
 
 
   return(
