@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, Platform } from 'react-native';
 import theme from '../theme';
+import useRepositories from '../hooks/useRepositories';
 
 const styles = StyleSheet.create({
   container: {
@@ -159,21 +160,8 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  const [repositories, setRepositories] = useState();
-
-  const fetchRepositories = async () => {
-    const response = await fetch('http://192.168.42.8:5000/api/repositories');
-    const json = await response.json();
-
-    console.log(json);
-
-    setRepositories(json);
-  };
-
-  useEffect(() => {
-    fetchRepositories();
-  }, []);
-
+  const { repositories } = useRepositories();
+  
   // GEt the nodes from the edge array
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
