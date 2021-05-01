@@ -3,6 +3,8 @@ import { View, Text, FlatList, StyleSheet, Image, Platform } from 'react-native'
 import theme from '../theme';
 import useRepositories from '../hooks/useRepositories';
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -161,6 +163,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
   const { repositories } = useRepositories();
+  // ...
   
   // GEt the nodes from the edge array
   const repositoryNodes = repositories
