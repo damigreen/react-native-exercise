@@ -7,7 +7,7 @@ const useRepositories = () => {
   const fetchRepositories = async () => {
     setLoading(true);
 
-    const response = await fetch('http://192.168.42.8:5000/api/repositories');
+    const response = await fetch('http://192.168.42.175:5000/api/repositories');
     const json = await response.json();
 
     setLoading(false);
