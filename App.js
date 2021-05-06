@@ -1,10 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { ApolloProvider } from '@apollo/client';
 import Main from './src/components/Main';
 import { NativeRouter } from 'react-router-native';
 import createApolloClient from './src/utils/apolloClient';
+// import { StyleSheet, Text, View } from 'react-native';
+// import { StatusBar } from 'expo-status-bar';
 
 
 const apolloClient = createApolloClient();
