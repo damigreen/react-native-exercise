@@ -6,31 +6,41 @@ import { GET_REPOSITORIES } from '../graphql/queries';
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
   const { data, error, loading } = useQuery(GET_REPOSITORIES, { errorPolicy: 'all' });
-  // const result = useQuery(GET_REPOSITORIES, { errorPolicy: 'all' });
-  // const [loading, setLoading] = useState(false);
-  // console.log(result);
+  const [load, setLoading] = useState(false);
   
   const fetchRepositories = async () => {
 
-    // if (loading) {
-    //   console.log('Loading======================');
-    // }
-
+    setLoading(true);
     
-    console.log(loading);
-    console.log(data);
-    console.log(error);
+    
+    
+    // const response = await fetch('http://192.168.42.216:5000/api/repositories');
+    // const json = await response.json();
+    // console.log(json);
+    
+    // setLoading(false);
+    // setRepositories(json);
+    
+    
 
-    const response = await fetch('http://192.168.42.182:19000/5000/api/repositories');
-    console.log(response);
-    const json = await response.json();
 
-    setRepositories(json);
+    // console.log(loading);
+    // console.log(data);
+    // console.log(data.repositories);
+    // console.log(error);
+    if (loading) {
+      console.log('Loading======================');
+    }
+
+    if (data !== undefined && loading === false) {
+      console.log('proced ---------------------->')
+      setRepositories(data.repositories);
+    }    
   };
 
   useEffect(() => {
     fetchRepositories();
-  }, []);
+  }, [data]);
 
   return { repositories, loading, refetch: fetchRepositories };
 }
