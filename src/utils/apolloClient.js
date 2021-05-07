@@ -1,8 +1,9 @@
-// import fetch from 'cross-fetch/polyfill';
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import Constants from 'expo-constants'
+
 
 const httpLink = createHttpLink({
-  uri: 'http://192.168.42.216:5000/graphql',
+  uri: Constants.manifest.extra.APOLLO_URI,
 });
 
 const createApolloClient = () => {
