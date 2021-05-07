@@ -29,11 +29,10 @@ const useRepositories = () => {
     // console.log(data.repositories);
     // console.log(error);
     if (loading) {
-      console.log('Loading======================');
+      // console.log('Loading======================');
     }
 
     if (data !== undefined && loading === false) {
-      console.log('proced ---------------------->')
       setRepositories(data.repositories);
     }    
   };
